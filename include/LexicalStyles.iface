@@ -179,6 +179,7 @@ val SCE_P_FTRIPLEDOUBLE=19
 val SCE_P_ATTRIBUTE=20
 # Lexical states for SCLEX_CPP
 # Lexical states for SCLEX_BULLANT
+# Lexical states for SCLEX_COBOL
 # Lexical states for SCLEX_TACL
 # Lexical states for SCLEX_TAL
 lex Cpp=SCLEX_CPP SCE_C_
