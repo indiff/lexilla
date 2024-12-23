@@ -225,18 +225,14 @@ static void ColourisePascalDoc(Sci_PositionU startPos, Sci_Position length, int 
 	CharacterSet setHexNumber(CharacterSet::setDigits, "abcdefABCDEF");
 	CharacterSet setOperator(CharacterSet::setNone, "#$&'()*+,-./:;<=>@[]^{}");
 
-	Sci_Position curLine = styler.GetLine(startPos);
-	int curLineState = curLine > 0 ? styler.GetLineState(curLine - 1) : 0;
+	int curLineState = 0;
 
 	StyleContext sc(startPos, length, initStyle, styler);
+	if (sc.currentLine > 0) {
+		curLineState = styler.GetLineState(sc.currentLine - 1);
+	}
 
 	for (; sc.More(); sc.Forward()) {
-		if (sc.atLineEnd) {
-			// Update the line state, so it can be seen by next line
-			curLine = styler.GetLine(sc.currentPos);
-			styler.SetLineState(curLine, curLineState);
-		}
-
 		// Determine if the current state should terminate.
 		switch (sc.state) {
 			case SCE_PAS_NUMBER:
@@ -334,6 +330,11 @@ static void ColourisePascalDoc(Sci_PositionU startPos, Sci_Position length, int 
 			} else if (curLineState & stateInAsm) {
 				sc.SetState(SCE_PAS_ASM);
 			}
+		}
+
+		if (sc.atLineEnd) {
+			// Update the line state, so it can be seen by next line
+			styler.SetLineState(sc.currentLine, curLineState);
 		}
 	}
 
