@@ -30,12 +30,12 @@
 namespace {
 
 #if defined(_WIN32)
-using Function = FARPROC;
-using Module = HMODULE;
+typedef FARPROC Function;
+typedef HMODULE Module;
 constexpr const char *pathSeparator = "\\";
 #else
-using Function = void *;
-using Module = void *;
+typedef void *Function;
+typedef void *Module;
 constexpr const char *pathSeparator = "/";
 #endif
 
@@ -164,10 +164,9 @@ bool Lexilla::Load(std::string_view sharedLibraryPaths) {
 			if (fnLexerCount && fnLexerName) {
 				const int nLexers = fnLexerCount();
 				for (int i = 0; i < nLexers; i++) {
-					constexpr size_t lengthName = 200;
-					char name[lengthName]{};
+					char name[100] = "";
 					fnLexerName(i, name, sizeof(name));
-					lexers.emplace_back(name);
+					lexers.push_back(name);
 				}
 			}
 			CreateLexerFn fnCL = FunctionPointer<CreateLexerFn>(
@@ -269,7 +268,7 @@ std::string Lexilla::NameFromID(int identifier) {
 			}
 		}
 	}
-	return {};
+	return std::string();
 }
 
 std::vector<std::string> Lexilla::LibraryProperties() {

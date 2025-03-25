@@ -192,6 +192,7 @@ constVariableReference:lexilla/lexers/LexX12.cxx
 constParameterPointer:lexilla/lexers/LexX12.cxx
 uselessCallsSubstr:lexilla/lexers/LexX12.cxx
 constParameterReference:lexilla/lexers/LexYAML.cxx
+constParameterPointer:lexilla/lexers/LexYAML.cxx
 knownConditionTrueFalse:lexilla/lexers/LexYAML.cxx
 
 // These are due to Accessor::IndentAmount not declaring the callback as taking a const.
