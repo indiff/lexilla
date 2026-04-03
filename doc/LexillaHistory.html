@@ -598,15 +598,45 @@
     </table>
     <h2 id="Releases">Releases</h2>
     <h3>
+       <a href="https://www.scintilla.org/lexilla549.zip">Release 5.4.9</a>
+    </h3>
+    <ul>
+	<li>
+	Released 26 March 2026.
+	</li>
+	<li>
+	C++: Fold for '#pragma region' and '#pragma endregion'.
+	<a href="https://github.com/ScintillaOrg/lexilla/issues/324">Issue #324</a>.
+	</li>
+	<li>
+	F#: Allow '!' for async keywords.
+	<a href="https://github.com/ScintillaOrg/lexilla/issues/352">Issue #352</a>.
+	</li>
+	<li>
+	Pascal: New SCE_PAS_MULTILINESTRING for multi-line triple-quoted strings.
+	<a href="https://github.com/ScintillaOrg/lexilla/issues/321">Issue #321</a>.
+	</li>
+    </ul>
+    <h3>
        <a href="https://www.scintilla.org/lexilla548.zip">Release 5.4.8</a>
     </h3>
     <ul>
 	<li>
-	Released 25 February 2026.
+	Released 26 March 2026.
 	</li>
 	<li>
 	Batch: Remove line length limitation and change to an object lexer.
 	<a href="https://github.com/ScintillaOrg/lexilla/issues/228">Issue #228</a>.
+	</li>
+	<li>
+	Forth: Treat \r\n line ends the same as \n. This makes testing easier.
+	<a href="https://github.com/ScintillaOrg/lexilla/issues/349">Issue #349</a>.
+	</li>
+	<li>
+	Forth: Allow more Forth words to be symbols or begin with a symbol.
+	Require whitespace around line comment tokens,
+	similar to the left-hand parenthesis of stream comments.
+	<a href="https://github.com/ScintillaOrg/lexilla/issues/351">Issue #351</a>.
 	</li>
 	<li>
 	JavaScript: in cpp lexer, add lexer.cpp.enable.preprocessor and lexer.cpp.allow.hashes properties.
